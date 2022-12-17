@@ -1,4 +1,4 @@
-import matplotlib_inline
+import matplotlib
 from abc import ABC, abstractmethod
 from numpy import array as vec
 import numpy.linalg
