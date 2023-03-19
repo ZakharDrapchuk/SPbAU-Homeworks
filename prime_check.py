@@ -1,4 +1,3 @@
-
 import math 
 from sympy import isprime
 #выпоним проверку при помощи т. Вильсона
