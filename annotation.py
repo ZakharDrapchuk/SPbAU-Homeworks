@@ -1,42 +1,27 @@
+import math
 from typeguard import typechecked
 
 
 @typechecked
-def gcd(a: int, b: int) -> int:
-    while a != 0 and b != 0:
-        if a > b:
-            a = a % b
+def check(num):
+     if math.factorial(num - 1) % -num == -1:
+        return f'число {num} простое'
+     else:
+        return f'Число {num} составное'
+
+
+test_cases = [5, 7, 10, '12', 3.14, [2, 3, 5], 3.11 - 12j]
+
+for num in test_cases:
+    try:
+        result = check(num)
+        print(f'Тест пройден. Результат: {result}')
+    except:
+        if type(num) == type('str'):
+            print('Тест провален. Была введена строка.')
+        elif type(num) == type(0.1):
+            print('Тест провален. Было введено число с плавающей запятой.')
+        elif  type(num) == type([1, 0]):
+            print('Тест провален. Был введён список.')
         else:
-            b = b % a
-    return a + b
-
-
-try:
-    a = 10
-    b = 20
-    print(f'НОД(a, b) = {gcd(a, b)}')
-    print('Тест 1 -- целые числа можно')
-except:
-    print('Тест 1 -- целые числа нельзя')
-
-try:
-    a = '10'
-    b = 20
-    print(f'НОД(a, b) = {gcd(a, b)}')
-    print('Тест 2 -- строки можно')
-except:
-    print('Тест 2 -- строки нельзя')
-try:
-    a = 10.23
-    b = 20
-    print(Euclid_algorithm(a, b))
-    print('Тест 3 -- вещественные числа можно')
-except:
-    print('Тест 3 -- вещественные числа нельзя')
-try:
-    a = 10
-    b = [20.0]
-    print(f'НОД(a, b) = {gcd(a, b)}')
-    print('Тест 4 -- список можно')
-except:
-    print('Тест 4 -- список нельзя')
+            print('Тест провален. Недопустимый тип.')   
